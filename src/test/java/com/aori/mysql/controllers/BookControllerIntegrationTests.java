@@ -68,8 +68,8 @@ public class BookControllerIntegrationTests {
         bookService.createUpdateBook(book.getIsbn(),book);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/books").contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].isbn").value(book.getIsbn()))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].title").value(book.getTitle()));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.content[0].isbn").value(book.getIsbn()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.content[0].title").value(book.getTitle()));
     }
 
     @Test
